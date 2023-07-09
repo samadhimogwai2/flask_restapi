@@ -1,0 +1,45 @@
+<template>
+  <h1 class="mt-5">Task</h1>
+
+  <form>
+    <div class="row form-row align-items-end justify-content-center">
+      <div class="col-auto">
+        <label class="sr-only" for="inlineFormInput">ID</label>
+        <input v-model="id" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="ID">
+      </div>
+      <div class="col-auto">
+        <button @click="get" type="button" class="btn btn-primary mb-2">Get</button>
+      </div>
+    </div>
+  </form>
+  {{ response }}
+</template>
+
+<script>
+import axios from 'axios'
+
+export default {
+  name: 'Get',
+  data() {
+    return {
+      id: "",
+      response: ""
+    }
+  },
+  methods: {
+    get(){
+      axios
+      .get('http://127.0.0.1:5000/'+this.id)
+      .then(response => {
+        let json_response = JSON.parse(response.data)
+        this.response = json_response
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+
+      this.id = ""
+      }
+  }
+}
+</script>
