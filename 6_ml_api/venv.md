@@ -1,7 +1,7 @@
 * 仮想環境の作成
 
 ```sh
-cd ./5_db_app # ディレクトリ移動
+cd ./6_ml_api # ディレクトリ移動
 python3 -m venv venv # 仮想環境作成
 source venv/bin/activate # 環境の中にはいる
 python3 -m pip install --upgrade pip # pip upgrade
