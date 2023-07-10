@@ -18,6 +18,7 @@ python api.py
 * frontend project作成
 
 ```sh
+cd ..
 npm init vite-app frontend # プロジェクト(フォルダ)作成
 cd frontend # 現在のディレクトリ移動
 npm install # 必要なものをインストール
