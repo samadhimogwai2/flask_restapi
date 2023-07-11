@@ -17,7 +17,6 @@ export const router = createRouter({
             path: '/create',
             name: 'create',
             component: Create,
-            // props: true
         },
         {
             path: '/get',
