@@ -29,14 +29,14 @@ export default {
   methods: {
     get(){
       axios
-      .get('http://127.0.0.1:5000/'+this.id)
-      .then(response => {
-        let json_response = JSON.parse(response.data)
-        this.response = json_response
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
+        .get('http://127.0.0.1:5000/'+this.id)
+        .then(response => {
+          let json_response = JSON.parse(response.data)
+          this.response = json_response
+        })
+        .catch(error => {
+          console.log(error);
+        })
 
       this.id = ""
       }

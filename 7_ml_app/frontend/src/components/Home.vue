@@ -45,23 +45,25 @@ export default {
         let json_response = JSON.parse(response.data).task_list
         this.response = json_response
       })
-      .catch(function (error) {
-        console.log(error);
-      })
+      .catch(error => {
+          console.log(error);
+        })
   },
   methods: {
     deleteUser(id){
       axios
-      .delete('http://127.0.0.1:5000/' + id)
-      .then(response => {
-        let json_response = response
-        this.response = json_response
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-
-      this.$router.go({path: '/', force: true})
+        .delete('http://127.0.0.1:5000/' + id)
+        .then(response => {
+          let json_response = response
+          this.response = json_response
+        })
+        .catch(error => {
+          console.log(error);
+        })
+        .finally(() => {
+          this.$router.go({path: '/', force: true})
+        })
+      
     },
     editUser(id){
       this.$router.push({name: 'user', params: {"id": id}})

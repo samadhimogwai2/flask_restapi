@@ -32,7 +32,6 @@ export default {
   data() {
     return {
       showFlag: false,
-      resultFlag: false,
       response: "",
       previewURL: "",
       image_b64: ","
@@ -68,18 +67,20 @@ export default {
       }
       
       axios
-      .post('http://127.0.0.1:5000/image', postData)
-      .then(response => {
-        let json_response = JSON.parse(response.data)
-        console.log(json_response)
-        this.response = json_response["status"]
-      })
-      .catch(function (error) {
-        console.log(error);
-        this.response = "FAIL"
-      })
+        .post('http://127.0.0.1:5000/image', postData)
+        .then(response => {
+          let json_response = JSON.parse(response.data)
+          console.log(json_response)
+          this.response = json_response["status"]
+        })
+        .catch(error => {
+          console.log(error);
+          this.response = "FAIL"
+        })
+        .finally(() => {
+          this.showFlag = true
+        })
 
-      this.showFlag = true
       }
   }
 }
