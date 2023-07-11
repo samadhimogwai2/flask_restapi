@@ -61,16 +61,16 @@ export default {
       }
 
       axios
-      .put('http://127.0.0.1:5000/user/'+this.id, putData)
-      .then(response => {
-        this.putResponse = JSON.parse(response.data).status
+        .put('http://127.0.0.1:5000/user/'+this.id, putData)
+        .then(response => {
+          this.putResponse = JSON.parse(response.data).status
 
-        this.showFlag = true
-      })
-      .catch(function (error) {
-        console.log(error);
-        this.putResponse = "FAIL"
-      })
+          this.showFlag = true
+        })
+        .catch(function (error) {
+          console.log(error);
+          this.putResponse = "FAIL"
+        })
 
       this.showFlag = true
     }
