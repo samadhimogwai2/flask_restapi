@@ -31,15 +31,15 @@ export default {
       axios
         .get('http://127.0.0.1:5000/'+this.id)
         .then(response => {
-          let json_response = JSON.parse(response.data)
-          this.response = json_response
+          this.response = JSON.parse(response.data)
         })
         .catch(error => {
           console.log(error);
         })
-
-      this.id = ""
-      }
+        .finally(() => {
+          this.id = ""
+        })
+    }
   }
 }
 </script>

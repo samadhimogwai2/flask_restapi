@@ -39,8 +39,8 @@ export default {
     axios
       .get('http://127.0.0.1:5000')
       .then(response => {
-        let json_response = JSON.parse(response.data).task_list
-        this.response = json_response
+         let json_response = JSON.parse(response.data)
+         this.response = json_response["task_list"]
       })
       .catch(error => {
         console.log(error);
@@ -51,8 +51,7 @@ export default {
       axios
         .delete('http://127.0.0.1:5000/' + id)
         .then(response => {
-          let json_response = response
-          this.response = json_response
+          this.response = JSON.parse(response)
         })
         .catch(error => {
           console.log(error);
@@ -60,7 +59,6 @@ export default {
         .finally(() => {
           this.$router.go({path: '/', force: true})
         })
-      
     },
     editUser(id){
       this.$router.push({name: 'user', params: {"id": id}})

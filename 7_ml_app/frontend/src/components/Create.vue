@@ -54,7 +54,7 @@ export default {
 
       if(file){
         const reader = new FileReader()
-        console.log(reader.readAsDataURL(file))
+        reader.readAsDataURL(file)
         reader.onload = () => {
           this.image_b64 = reader.result.split(',')[1]
         }
@@ -65,12 +65,10 @@ export default {
         "image_name": String(this.image_name),
         "image_b64": String(this.image_b64)
       }
-      
       axios
         .post('http://127.0.0.1:5000/image', postData)
         .then(response => {
           let json_response = JSON.parse(response.data)
-          console.log(json_response)
           this.response = json_response["status"]
         })
         .catch(error => {
@@ -80,8 +78,7 @@ export default {
         .finally(() => {
           this.showFlag = true
         })
-
-      }
+    }
   }
 }
 </script>
