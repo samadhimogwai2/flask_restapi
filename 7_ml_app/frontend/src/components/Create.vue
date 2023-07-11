@@ -68,8 +68,8 @@ export default {
       axios
         .post('http://127.0.0.1:5000/image', postData)
         .then(response => {
-          let json_response = JSON.parse(response.data)
-          this.response = json_response["status"]
+          let jsonResponse = JSON.parse(response.data)
+          this.response = jsonResponse["status"]
         })
         .catch(error => {
           console.log(error)
