@@ -72,7 +72,7 @@ export default {
           this.response = json_response["status"]
         })
         .catch(error => {
-          console.log(error);
+          console.log(error)
           this.response = "FAIL"
         })
         .finally(() => {

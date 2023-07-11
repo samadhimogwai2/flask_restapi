@@ -43,7 +43,7 @@ export default {
          this.response = json_response["task_list"]
       })
       .catch(error => {
-        console.log(error);
+        console.log(error)
       })
   },
   methods: {

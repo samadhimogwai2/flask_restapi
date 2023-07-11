@@ -34,7 +34,7 @@ export default {
           this.response = JSON.parse(response.data)
         })
         .catch(error => {
-          console.log(error);
+          console.log(error)
         })
         .finally(() => {
           this.id = ""
