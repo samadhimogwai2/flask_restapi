@@ -46,8 +46,8 @@ export default {
         this.response = json_response
       })
       .catch(error => {
-          console.log(error);
-        })
+        console.log(error);
+      })
   },
   methods: {
     deleteUser(id){
