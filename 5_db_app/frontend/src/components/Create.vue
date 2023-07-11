@@ -37,7 +37,6 @@ export default {
       id: "",
       username: "",
       showFlag: false,
-      resultFlag: false,
       response: ""
     }
   },

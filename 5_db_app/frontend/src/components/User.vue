@@ -42,7 +42,6 @@ export default {
       putResponse: "",
       username: "",
       showFlag: false,
-      resultFlag: false,
     }
   },
   computed: {
