@@ -66,7 +66,7 @@ export default {
       })
       .catch(function (error) {
         console.log(error);
-        this.response = "Fail"
+        this.response = "FAIL"
       })
 
       this.showFlag = true

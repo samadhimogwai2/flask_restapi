@@ -18,7 +18,7 @@
       </div>
     </div>
   </form>
-  {{ getResponse }}
+  <p>{{ getResponse }}</p>
 
   <template v-if="showFlag">
     <div :class="classObj" role="alert">
@@ -63,8 +63,7 @@ export default {
       axios
       .put('http://127.0.0.1:5000/user/'+this.id, putData)
       .then(response => {
-        const json_response = JSON.parse(response.data).status
-        this.putResponse = json_response
+        this.putResponse = JSON.parse(response.data).status
 
         this.showFlag = true
       })
@@ -72,15 +71,15 @@ export default {
         console.log(error);
         this.putResponse = "FAIL"
       })
+
+      this.showFlag = true
     }
   },
   mounted(){
     axios
       .get('http://127.0.0.1:5000/user/'+this.id)
       .then(response => {
-        let json_response = JSON.parse(response.data)
-        console.log(json_response)
-        this.response = json_response
+        this.getResponse = JSON.parse(response.data)
       })
   }
 }
