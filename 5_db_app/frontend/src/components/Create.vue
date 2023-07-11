@@ -57,15 +57,15 @@ export default {
       }
       
       axios
-      .post('http://127.0.0.1:5000', postData)
-      .then(response => {
-        let json_response = JSON.parse(response.data)
-        this.response = json_response["status"]
-      })
-      .catch(function (error) {
-        console.log(error);
-        this.response = "FAIL"
-      })
+        .post('http://127.0.0.1:5000', postData)
+        .then(response => {
+          let json_response = JSON.parse(response.data)
+          this.response = json_response["status"]
+        })
+        .catch(function (error) {
+          console.log(error);
+          this.response = "FAIL"
+        })
 
       this.showFlag = true
       this.id = ""
