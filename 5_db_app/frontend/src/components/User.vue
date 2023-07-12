@@ -22,7 +22,7 @@
 
   <template v-if="showFlag">
     <div :class="classObj" role="alert">
-      {{ putResponse }}
+      {{ putStatus }}
     </div>
   </template>
   
@@ -38,9 +38,9 @@ export default {
   },
   data() {
     return {
-      getResponse: "",
-      putResponse: "",
       username: "",
+      getResponse: "",
+      putStatus: "",
       showFlag: false,
     }
   },
@@ -48,8 +48,8 @@ export default {
     classObj(){
         return {
           alert: true,
-          "alert-primary": this.putResponse === "SUCCESS",
-          "alert-danger": this.putResponse != "SUCCESS",
+          "alert-primary": this.putStatus === "SUCCESS",
+          "alert-danger": this.putStatus != "SUCCESS",
         }
     }
   },
@@ -63,16 +63,16 @@ export default {
       axios
         .put('http://127.0.0.1:5000/user/'+this.id, putData)
         .then(response => {
-          this.putResponse = JSON.parse(response.data).status
-
+          let putResponse = JSON.parse(response.data)
+          this.putStatus = putResponse["status"]
+        })
+        .catch(error => {
+          console.log(error);
+          this.putStatus = "FAIL"
+        })
+        .finally(() => {
           this.showFlag = true
         })
-        .catch(function (error) {
-          console.log(error);
-          this.putResponse = "FAIL"
-        })
-
-      this.showFlag = true
     }
   },
   mounted(){

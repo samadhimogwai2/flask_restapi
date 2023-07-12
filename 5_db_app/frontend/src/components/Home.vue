@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <template v-for="item in getResponse">
+      <template v-for="item in users">
         <tr class="align-middle">
           <td>{{item.id}}</td>
           <td>{{item.username}}</td>
@@ -34,17 +34,17 @@ export default {
   name: 'Home',
   data() {
     return {
-      getResponse: {},
-      deleteResponse: {}
+      users: [],
     }
   },
   mounted(){
     axios
       .get('http://127.0.0.1:5000')
       .then(response => {
-        this.getResponse = JSON.parse(response.data).users
+        let getResponse = JSON.parse(response.data)
+        this.users = getResponse["users"]
       })
-      .catch(function (error) {
+      .catch(error => {
         console.log(error);
       })
   },
@@ -53,13 +53,15 @@ export default {
       axios
       .delete('http://127.0.0.1:5000/user/' + id)
       .then(response => {
-        this.deleteResponse = response
+        let deleteResponse = JSON.parse(response.data)
+        console.log(deleteResponse)
       })
-      .catch(function (error) {
+      .catch(error => {
         console.log(error);
       })
-
-      this.$router.go({path: '/', force: true})
+      .finally(() => {
+        this.$router.go({path: '/', force: true})
+      })
     },
     editUser(id){
       this.$router.push({name: 'user', params: {"id": id}})
