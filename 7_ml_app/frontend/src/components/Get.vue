@@ -12,7 +12,7 @@
       </div>
     </div>
   </form>
-  {{ response }}
+  {{ getResponse }}
 </template>
 
 <script>
@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       id: "",
-      response: ""
+      getResponse: ""
     }
   },
   methods: {
@@ -31,7 +31,7 @@ export default {
       axios
         .get('http://127.0.0.1:5000/'+this.id)
         .then(response => {
-          this.response = JSON.parse(response.data)
+          this.getResponse = JSON.parse(response.data)
         })
         .catch(error => {
           console.log(error)

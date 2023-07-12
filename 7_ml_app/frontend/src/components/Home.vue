@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <template v-for="item in getResponse">
+      <template v-for="item in task_list">
         <tr class="align-middle">
           <td>{{item.id}}</td>
           <td>{{item.image_name}}</td>
@@ -32,15 +32,15 @@ export default {
   name: 'Home',
   data() {
     return {
-      getResponse: {}
+      task_list: []
     }
   },
   mounted(){
     axios
       .get('http://127.0.0.1:5000')
       .then(response => {
-         let jsonResponse = JSON.parse(response.data)
-         this.getResponse = jsonResponse["task_list"]
+        let getResponse = JSON.parse(response.data)
+        this.task_list = getResponse["task_list"]
       })
       .catch(error => {
         console.log(error)
@@ -51,8 +51,8 @@ export default {
       axios
         .delete('http://127.0.0.1:5000/' + id)
         .then(response => {
-          let jsonResponse = JSON.parse(response)
-          console.log(jsonResponse)
+          let deleteResponse = JSON.parse(response)
+          console.log(deleteResponse)
         })
         .catch(error => {
           console.log(error);

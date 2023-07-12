@@ -3,7 +3,7 @@
 
   <template v-if="showFlag">
     <div :class="classObj" role="alert">
-      {{ response }}
+      {{ postStatus }}
     </div>
   </template>
 
@@ -31,18 +31,18 @@ export default {
   name: 'Create',
   data() {
     return {
-      showFlag: false,
-      response: "",
+      postStatus: "",
       previewURL: "",
-      image_b64: ","
+      image_b64: ",",
+      showFlag: false,
     }
   },
   computed: {
     classObj(){
         return {
           alert: true,
-          "alert-primary": this.response === "SUCCESS",
-          "alert-danger": this.response != "SUCCESS",
+          "alert-primary": this.postStatus === "SUCCESS",
+          "alert-danger": this.postStatus != "SUCCESS",
         }
     }
   },
@@ -68,12 +68,12 @@ export default {
       axios
         .post('http://127.0.0.1:5000/image', postData)
         .then(response => {
-          let jsonResponse = JSON.parse(response.data)
-          this.response = jsonResponse["status"]
+          let postResponse = JSON.parse(response.data)
+          this.postStatus = postResponse["status"]
         })
         .catch(error => {
           console.log(error)
-          this.response = "FAIL"
+          this.postStatus = "FAIL"
         })
         .finally(() => {
           this.showFlag = true
