@@ -17,7 +17,7 @@
           <td>{{item.image_name}}</td>
           <td>{{item.result}}</td>
           <td>
-            <button @click="deleteUser(item.id)" class="btn btn-close"></button>
+            <button @click="deleteTask(item.id)" class="btn btn-close"></button>
           </td>
         </tr>
       </template>  
@@ -47,7 +47,7 @@ export default {
       })
   },
   methods: {
-    deleteUser(id){
+    deleteTask(id){
       axios
         .delete('http://127.0.0.1:5000/' + id)
         .then(response => {
@@ -60,9 +60,6 @@ export default {
         .finally(() => {
           this.$router.go({path: '/', force: true})
         })
-    },
-    editUser(id){
-      this.$router.push({name: 'user', params: {"id": id}})
     },
   }
 }
