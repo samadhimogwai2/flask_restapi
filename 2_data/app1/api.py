@@ -14,7 +14,7 @@ class HelloWorld(Resource):
 class Try(Resource):
     def get(self):
         try:
-            int("Error") # ここでError
+            int("Error") # ここでErrorを発生させる
             response = {'msg': 'Try'}
         except Exception as e:
             response = {'error': str(e)}
@@ -23,7 +23,7 @@ class Try(Resource):
 class Trace(Resource):
     def get(self):
         try:
-            int("Error") # ここでError
+            int("Error") # ここでErrorを発生させる
             response = {'msg': 'Trace'}
         except Exception:
             response = {'error': str(traceback.format_exc())}
