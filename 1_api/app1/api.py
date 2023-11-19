@@ -10,6 +10,7 @@ class HelloWorld(Resource):
         response = {'msg': 'Hello world'}
         return json.dumps(response)
     
+# 指定のパスにアクセスした場合、HelloWorldを実行    
 api.add_resource(HelloWorld, '/')
 
 if __name__ == '__main__':
