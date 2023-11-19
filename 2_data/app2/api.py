@@ -6,7 +6,7 @@ app = Flask(__name__)
 api = Api(app)
 
 class HelloWorld(Resource):
-    def get(self, id):
+    def get(self, id): # id = URLに付加した値をパラメータとして受取
         try:
             response = {
                 'class': "HelloWorld",
