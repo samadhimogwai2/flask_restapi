@@ -2,12 +2,15 @@ from flask import Flask, request
 from flask_restful import Resource, Api
 import json
 
+# クエリ情報の受取
+
 app = Flask(__name__)
 api = Api(app)
 
 class HelloWorld(Resource):
     def get(self):
         try: 
+            # クエリ情報を受取(辞書型)
             query_data = request.args
             response = {
                 'query_data': str(query_data),

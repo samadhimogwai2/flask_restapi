@@ -2,6 +2,8 @@ from flask import Flask
 from flask_restful import Resource, Api
 import json
 
+# パラメータ受取
+
 app = Flask(__name__)
 api = Api(app)
 
