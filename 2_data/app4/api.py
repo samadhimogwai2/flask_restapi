@@ -5,10 +5,13 @@ import json
 app = Flask(__name__)
 api = Api(app)
 
+# データの受け取り
+
 class HelloWorld(Resource):
     
     def post(self):
         try:
+            # データの受け取り(Json→辞書型)
             data = json.loads(request.data)
             response = {
                 'data': f'あなたが送ったdataは{data}',

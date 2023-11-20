@@ -1,5 +1,6 @@
 import requests
 import json
+import pandas as pd
 
 URL = "http://127.0.0.1:5000"
 USERS = [
@@ -27,6 +28,9 @@ def main():
     print(f"\nstatus code: {response.status_code}")
     print(f"content: {json.loads(response.json())}")
     # --------------------------------------------------------
+    js = json.loads(response.json())
+    usernames = [user['username'] for user in js['Users']]
+    print(usernames)
 
     # --------------------------------------------------------
     # DELETE

@@ -21,6 +21,7 @@ class User(db.Model):
 class HelloWorld(Resource):
     def get(self):
         try:
+            # DBよりUserの全件を取得
             users = db.session.query(User).all()
             users_list = []
             for user in users:
@@ -37,6 +38,7 @@ class HelloWorld(Resource):
     
     def post(self):
         try:
+            # 受け渡されたデータをUserに登録
             data = json.loads(request.data)
             user = User(
                 id = data["id"],
@@ -51,6 +53,7 @@ class HelloWorld(Resource):
     
     def delete(self):
         try:
+            # 受け渡されたデータをUserから削除
             db.session.query(User).delete()
             db.session.commit()
             response = {"msg": "DELETED"}
@@ -61,6 +64,7 @@ class HelloWorld(Resource):
 api.add_resource(HelloWorld, '/')
 
 if __name__ == '__main__':
+    # DB生成
     with app.app_context():
         db.create_all()
     app.run(debug=True)
